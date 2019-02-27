@@ -69,16 +69,6 @@ function update_version()
     echo $version_new
 }
 
-function git_push()
-{
-    git_pool=$(git remote -v  | grep push | awk '{print $2}')
-    cur_branch=$(git branch | grep \* | awk '{print $2}')
-    #合并远程分支代码
-    git pull $git_pool $cur_branch
-    #提交本地代码
-    git push $git_pool $cur_branch
-}
-
 function git_tag()
 {
     version_now=$1
